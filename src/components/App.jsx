@@ -2,7 +2,6 @@ import { Component } from 'react';
 import 'modern-normalize';
 import { nanoid } from 'nanoid';
 
-
 export class App extends Component {
   state = {
     contacts: [
