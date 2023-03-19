@@ -1,6 +1,11 @@
 import { Component } from 'react';
+import { GlobalStyles } from './GlobalStyles';
 import 'modern-normalize';
 import { nanoid } from 'nanoid';
+
+import { ContactForm } from './ContactForm/ContactForm';
+import { ContactList } from './ContactList/ContactList';
+import { Filter } from './Filter/Filter';
 
 export class App extends Component {
   state = {
@@ -61,8 +66,16 @@ export class App extends Component {
   render() {
     return (
       <div>
+        <GlobalStyles />
         <h1>Phonebook</h1>
+        <ContactForm onFormSubmit={this.handleSubmit} />
         <h2>Contacts</h2>
+        <Filter onFilter={this.handleFilter} />
+        <ContactList
+          contacts={this.state.contacts}
+          filteredContacts={this.makeFiltredContacts()}
+          onDelete={this.handleDelete}
+        />
       </div>
     );
   }
